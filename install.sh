@@ -52,6 +52,27 @@ else
   cp -r colors ~/.vim/
 fi
 
+#set autoload
+if [[ -d ~/.vim ]]
+then
+  echo "~/.vim/ is exist"
+  if [[ -d ~/.vim/autoload ]]
+  then
+    echo "~/.vim/autoload/ is exist"
+    rm -rf ~/.vim/autoload/
+    cp -r autoload ~/.vim/
+  else
+    echo "~/.vim/colors/ is not exist"
+    cp -r autoload ~/.vim/
+  fi
+else
+  echo " ~/.vim is not exist"
+  mkdir ~/.vim
+  cp -r autoload ~/.vim/
+fi
+
+
+
 # set vimrc vim_runtime
 if [[ -d ~/.vim_runtime ]]
 then
