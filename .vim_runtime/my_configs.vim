@@ -2,7 +2,8 @@
 
 " Colorscheme
 set background=dark
-colorscheme space-vim-dark
+colorscheme gruvbox
+"colorscheme space-vim-dark
 "let g:rehash256 = 1
 "colorscheme molokai
 "colorscheme peaksea
@@ -11,6 +12,16 @@ colorscheme space-vim-dark
 
 set cursorline
 set cc=80
+
+" add some set c/cpp syntax with syntax/cpp.vim and syntax/c.vim
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_posix_standard = 1
+let g:cpp_concepts_highlight = 1
+let g:cpp_no_function_highlight = 1
+""" this is may be some bugs
+let g:cpp_experimental_simple_template_highlight = 1
 
 " set for bangc code as cpp syntax highlight
 augroup filetype

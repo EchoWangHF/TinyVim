@@ -16,6 +16,24 @@ else
   cp -r syntax ~/.vim/
 fi
 
+if [[ -d ~/.vim ]]
+then
+  echo "~/.vim/ is exist"
+  if [[ -d ~/.vim/after ]]
+  then
+    echo "~/.vim/after/ is exist"
+    rm -rf ~/.vim/after/
+    cp -r after ~/.vim/
+  else
+    echo "~/.vim/after/ is not exist"
+    cp -r after ~/.vim/
+  fi
+else
+  echo " ~/.vim is not exist"
+  mkdir ~/.vim
+  cp -r after ~/.vim/
+fi
+
 #set colors scheme
 if [[ -d ~/.vim ]]
 then
