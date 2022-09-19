@@ -93,7 +93,7 @@ cp -r autoload ~/.vim/
 # set vimrc vim_runtime
 if [[ -d ~/.vim_runtime ]]
 then
-  echo "~/.vim_runtime is exist"
+  echo "~/.vim_runtime is exist and ~/.vim_runtime will be delete"
   rm -rf ~/.vim_runtime
   cp -r .vim_runtime ~/
 else
@@ -102,6 +102,4 @@ fi
 
 cd ~/.vim_runtime
 bash install_awesome_vimrc.sh
-## maybe you just want to basic vim, you can use:
-#bash install_basic_vimrc.sh
 
