@@ -19,9 +19,11 @@ Plug 'jiangmiao/auto-pairs'
 " 自动补全插件，需要clang
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
-" 状态栏设置差价
+" 状态栏设置插件
 Plug 'vim-airline/vim-airline'
 
+" 左侧设置对齐线插件
+Plug 'Yggdroot/indentLine'
 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.

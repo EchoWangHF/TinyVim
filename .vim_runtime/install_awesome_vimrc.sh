@@ -10,7 +10,7 @@ set runtimepath+=~/.vim_runtime
 
 source ~/.vim_runtime/basic.vim
 source ~/.vim_runtime/plugins_config.vim
-source ~/.vim_runtime/vimrcs/extended.vim
+source ~/.vim_runtime/extended.vim
 try
   source ~/.vim_runtime/my_configs.vim
 catch
