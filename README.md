@@ -29,8 +29,20 @@ au! BufRead,BufNewFile *.ll     set filetype=llvm
 ```
 
 ### 3 插件安装
-`TinyVim` 使用的是[vim-plug](https://github.com/junegunn/vim-plug)插件，需要添加什么插件，只需要在`.vim_runtime/plugins_config.vim`当中按照`vim-plug`插件格式添加对应的插件就可以了，然后在vim当中运行`PlugvimInstall`命令。比如：
+`TinyVim` 使用的是[vim-plug](https://github.com/junegunn/vim-plug)插件，需要添加什么插件，只需要在`.vim_runtime/plugins_config.vim`当中按照`vim-plug`插件格式添加对应的插件就可以了，然后在vim当中运行`PlugInstall`命令。比如：
 ```
 Plug 'vim-airline/vim-airline
 ```
+`vim-plug`常用命令为：
+
+| Command                             | Description                                                        |
+| ----------------------------------- | ------------------------------------------------------------------ |
+| `PlugInstall [name ...] [#threads]` | Install plugins                                                    |
+| `PlugUpdate [name ...] [#threads]`  | Install or update plugins                                          |
+| `PlugClean[!]`                      | Remove unlisted plugins (bang version will clean without prompt) |
+| `PlugUpgrade`                       | Upgrade vim-plug itself                                            |
+| `PlugStatus`                        | Check the status of plugins                                        |
+| `PlugDiff`                          | Examine changes from the previous update and the pending changes   |
+| `PlugSnapshot[!] [output path]`     | Generate script for restoring the current snapshot of the plugins  |
+
 如果插件需要额外的配置，为了统一管理，请放在`.vim_runtime/extended.vim`当中。
