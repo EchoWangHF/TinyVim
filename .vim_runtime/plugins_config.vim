@@ -19,8 +19,9 @@ Plug 'jiangmiao/auto-pairs'
 " 自动补全插件，需要clang
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 
-" 状态栏设置插件
+" 状态栏设置插件和主题
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " 左侧设置对齐线插件
 Plug 'Yggdroot/indentLine'
