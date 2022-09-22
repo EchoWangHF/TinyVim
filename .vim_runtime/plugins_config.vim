@@ -11,7 +11,7 @@ call plug#begin()
 " Make sure you use single quotes
 
 " 模糊文件查找插件：:LeaderfFile 查找当前目录下文件
-"Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
 
 " 自动生成成对括号插件；
 Plug 'jiangmiao/auto-pairs'
@@ -25,6 +25,9 @@ Plug 'vim-airline/vim-airline-themes'
 
 " 左侧设置对齐线插件
 Plug 'Yggdroot/indentLine'
+
+" 设置空格检查和删除
+Plug 'ntpeters/vim-better-whitespace'
 
 " Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.

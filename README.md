@@ -46,3 +46,13 @@ Plug 'vim-airline/vim-airline
 | `PlugSnapshot[!] [output path]`     | Generate script for restoring the current snapshot of the plugins  |
 
 如果插件需要额外的配置，为了统一管理，请放在`.vim_runtime/extended.vim`当中。
+
+#### 3.1 LeaderfFile 
+```
+:LeaderfFile <file>
+```
+
+#### 3.2 vim-better-whitespace 
+```
+::StripWhitespace
+```
