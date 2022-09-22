@@ -47,12 +47,12 @@ Plug 'vim-airline/vim-airline
 
 如果插件需要额外的配置，为了统一管理，请放在`.vim_runtime/extended.vim`当中。
 
-#### 3.1 LeaderfFile 
+#### 3.1 [LeaderfFile](https://github.com/Yggdroot/LeaderF) 
 ```
 :LeaderfFile <file>
 ```
 
-#### 3.2 vim-better-whitespace 
+#### 3.2 [vim-better-whitespace](https://github.com/ntpeters/vim-better-whitespace) 
 ```
 ::StripWhitespace
 ```
