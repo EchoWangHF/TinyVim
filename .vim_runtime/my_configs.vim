@@ -2,13 +2,13 @@
 
 " Colorscheme
 set background=dark
-"colorscheme gruvbox
+colorscheme gruvbox
 "colorscheme space-vim-dark
 "let g:rehash256 = 1
 "colorscheme molokai
 "colorscheme peaksea
 "let g:solarized_termcolors=256
-colorscheme solarized
+"colorscheme solarized
 
 set cursorline
 set cc=80
