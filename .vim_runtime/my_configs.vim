@@ -52,6 +52,10 @@ augroup filetype
  au! BufRead,BufNewFile *.rst     set filetype=rest
 augroup END
 
+augroup filetype
+ au! BufRead,BufNewFile *.mlir     set filetype=mlir
+augroup END
+
 " set for ctags
 set tags=tags;/
 map <c-]> g<c-]>
