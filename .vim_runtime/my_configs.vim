@@ -23,12 +23,12 @@ let g:cpp_no_function_highlight = 1
 """ this is may be some bugs
 let g:cpp_experimental_simple_template_highlight = 1
 
-" set for bangc code as cpp syntax highlight
+" set for cambricon bangc code as cpp syntax highlight
 augroup filetype
 au! BufRead,BufNewFile *.mlu set filetype=cpp
 augroup END
 
-" set for .mlisa asm code as .s syntax highlight
+" set for camricon mlisa asm code as .s syntax highlight
 augroup filetype
 au! BufRead,BufNewFile *.mlisa set filetype=asm
 augroup END
