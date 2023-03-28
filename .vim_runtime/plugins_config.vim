@@ -25,7 +25,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " 左侧设置对齐线插件
-Plug 'Yggdroot/indentLine'
+"Plug 'Yggdroot/indentLine'
 
 " 设置空格检查和删除
 Plug 'ntpeters/vim-better-whitespace'
