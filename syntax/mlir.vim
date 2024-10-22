@@ -14,7 +14,7 @@ syn case match
 
 " Types.
 "
-syn keyword mlirType index f16 f32 f64 bf16
+syn keyword mlirType index f16 f32 f64 bf16 tf32
 " Signless integer types.
 syn match mlirType /\<i\d\+\>/
 " Unsigned integer types.
@@ -23,7 +23,7 @@ syn match mlirType /\<ui\d\+\>/
 syn match mlirType /\<si\d\+\>/
 
 " Elemental types inside memref, tensor, or vector types.
-syn match mlirType /x\s*\zs\(bf16|f16\|f32\|f64\|i\d\+\|ui\d\+\|si\d\+\)/
+syn match mlirType /x\s*\zs\(bf16\|f16\|f32\|tf32\|f64\|i\d\+\|ui\d\+\|si\d\+\)/
 
 " Shaped types.
 syn match mlirType /\<memref\ze\s*<.*>/
@@ -35,12 +35,13 @@ syn match mlirType /x\s*\zsvector/
 
 " Operations.
 " TODO: this list is not exhaustive.
-syn keyword mlirOps alloc alloca addf addi and call call_indirect cmpf cmpi
+syn keyword mlirOps alloc alloca addf addi and call call_indirect cmpf cmpi divui
 syn keyword mlirOps constant dealloc divf dma_start dma_wait dim exp
 syn keyword mlirOps getTensor index_cast load log memref_cast
 syn keyword mlirOps memref_shape_cast mulf muli negf powf prefetch rsqrt sitofp
 syn keyword mlirOps splat store select sqrt subf subi subview tanh
-syn keyword mlirOps view
+syn keyword mlirOps view reinterpret_cast expand_shape collapse_shape
+syn keyword mlirOps sizes strided offset strides stride
 
 " Math ops.
 syn match mlirOps /\<math\.erf\>/
@@ -73,6 +74,7 @@ syn keyword mlirKeyword
       \ return
       \ step
       \ to
+      \ attributes
 
 " Misc syntax.
 
