@@ -1,27 +1,12 @@
-set -e
-if [[ -d ~/.vim ]]
-then
-  echo "~/.vim/ is exist, and ~/.vim will be delete!"
-  rm -rf ~/.vim
-  mkdir ~/.vim
-else
-  mkdir ~/.vim
-fi
-#set syntax
-cp -r syntax ~/.vim/
-#set after cp syntax
-cp -r after ~/.vim/
-#set colors scheme
-cp -r colors ~/.vim/
-#set autoload
-cp -r autoload ~/.vim/
+#!/usr/bin/env bash
+set -euo pipefail
 
-if [[ -d ~/.vim_runtime ]]
-then
-  echo "~/.vim_runtime is exist and ~/.vim_runtime will be delete"
-  rm -rf ~/.vim_runtime
-  cp -r .vim_runtime ~/
-else
-  cp -r .vim_runtime ~/
+repo_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
+mkdir -p "$HOME/.vim" "$HOME/.vim_runtime"
+
+cp -R "$repo_dir"/{syntax,after,colors} "$HOME/.vim/"
+if [[ ${1:-} == --with-plug ]]; then
+  cp -R "$repo_dir/autoload" "$HOME/.vim/"
 fi
+cp -R "$repo_dir/.vim_runtime/." "$HOME/.vim_runtime/"
 

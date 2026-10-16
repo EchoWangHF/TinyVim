@@ -127,8 +127,10 @@ if has("gui_macvim")
 endif
 
 
-" Add a bit extra margin to the left
-set foldcolumn=1
+" Keep the left margin free of fold and diagnostic sign columns.
+set foldcolumn=0
+set signcolumn=no
+let g:lsp_diagnostics_signs_enabled = 0
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

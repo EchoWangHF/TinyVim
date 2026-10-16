@@ -14,7 +14,7 @@ syn case match
 
 " Types.
 "
-syn keyword mlirType index f16 f32 f64 bf16 tf32
+syn keyword mlirType index f16 f32 f64 f80 f128 bf16 tf32 complex none tuple
 " Signless integer types.
 syn match mlirType /\<i\d\+\>/
 " Unsigned integer types.
@@ -32,6 +32,23 @@ syn match mlirType /\<vector\ze\s*<.*>/
 
 " vector types inside memref or tensor.
 syn match mlirType /x\s*\zsvector/
+
+" The dialect and operation name are separate visual levels. This also covers
+" operations added by dialects which are absent from the keyword list below.
+syn match mlirOperation /\<[A-Za-z_][A-Za-z0-9_]*\.[A-Za-z_][A-Za-z0-9_.]*\>/ contains=mlirDialect
+syn match mlirDialect /\<[A-Za-z_][A-Za-z0-9_]*\ze\./ contained
+
+" MLU operations from mlir/Dialect/MLU/IR/MLUOps.td. Keep the general
+" operation rule above for new ops; distinguish the main hardware roles.
+syn match mlirMluControlOp /\<mlu\.\%(module\|module_terminator\|func\|return\|call\|libdevice\.call\|execute\|yield\|annotate\)\>/ contains=mlirMluDialect
+syn match mlirMluMemoryOp /\<mlu\.\%(alloc\|view\|addr\|offset\|stride\|load\|store\|copy\|multicast\|memset\|memref_cast\|gather\|scatter\|broadcast\|pad\|reorder_filter\|transpose\|reshape_and_transpose\)\>/ contains=mlirMluDialect
+syn match mlirMluSyncOp /\<mlu\.\%(sync\%(\.[pv]\)\?\|barrier\)\>/ contains=mlirMluDialect
+syn match mlirMluAtomicOp /\<mlu\.atomic\.\%(add\|and\|cas\|dec\|exch\|inc\|max\|min\|or\|xor\)\%(\.discrete\)\?\>/ contains=mlirMluDialect
+syn match mlirMluDialect /\<mlu\ze\./ contained
+
+" MLU attribute names also have a dotted prefix (including mlu.func).
+" Match them in dictionaries so they do not inherit an operation color.
+syn match mlirMluAttribute /\%({\|,\)\s*\zsmlu\.[A-Za-z_][A-Za-z0-9_.]*\ze\s*\%(=\|[,}]\)/
 
 " Operations.
 " TODO: this list is not exhaustive.
@@ -75,6 +92,12 @@ syn keyword mlirKeyword
       \ step
       \ to
       \ attributes
+      \ builtin
+      \ loc
+      \ unit
+
+" Attribute dictionary keys, for example {sym_name = "foo"}.
+syn match mlirAttributeName /\<[A-Za-z_][A-Za-z0-9_]*\ze\s*=/
 
 " Misc syntax.
 
@@ -83,16 +106,25 @@ syn match   mlirNumber /-\?\<\d\+\>/
 syn match   mlirNumber /-\?\<\d\+\ze\s*x/
 syn match   mlirNumber /x\s*\zs-\?\d\+\ze\s*x/
 
-syn match   mlirFloat  /-\?\<\d\+\.\d*\(e[+-]\d\+\)\?\>/
+syn match   mlirFloat  /-\?\<\d\+\.\d*\([eE][+-]\?\d\+\)\?\>/
+syn match   mlirFloat  /-\?\<\d\+[eE][+-]\?\d\+\>/
 syn match   mlirFloat  /\<0x\x\+\>/
 syn keyword mlirBoolean true false
 " Spell checking is enabled only in comments by default.
 syn match   mlirComment /\/\/.*$/ contains=@Spell
 syn region  mlirString start=/"/ skip=/\\"/ end=/"/
+" Generic-form operations are quoted, unlike custom-form mlu.copy(...).
+syn match   mlirMluQuotedOp /"mlu\.[A-Za-z_][A-Za-z0-9_.]*"\ze\s*(/ contains=mlirMluDialect
+syn match   mlirMluAttribute /"mlu\.[A-Za-z_][A-Za-z0-9_.]*"\ze\s*=/
 syn match   mlirLabel /[-a-zA-Z$._][-a-zA-Z$._0-9]*:/
 " Prefixed identifiers usually used for ssa values and symbols.
 syn match   mlirIdentifier /[%@][a-zA-Z$._-][a-zA-Z0-9$._-]*/
 syn match   mlirIdentifier /[%@]\d\+\>/
+" SSA values and symbols have different roles in IR; give them separate groups.
+syn match   mlirSSAValue /%[a-zA-Z$._-][a-zA-Z0-9$._-]*\%([#]\d\+\)\?/
+syn match   mlirSSAValue /%\d\+\%([#]\d\+\)\?\>/
+syn match   mlirSymbol /@[a-zA-Z$._-][a-zA-Z0-9$._-]*/
+syn match   mlirSymbol /@\d\+\>/
 " Prefixed identifiers usually used for blocks.
 syn match   mlirBlockIdentifier /\^[a-zA-Z$._-][a-zA-Z0-9$._-]*/
 syn match   mlirBlockIdentifier /\^\d\+\>/
@@ -133,9 +165,21 @@ if version >= 508 || !exists("did_c_syn_inits")
   HiLink mlirConstant Constant
   HiLink mlirSpecialComment SpecialComment
   HiLink mlirIdentifier Identifier
+  HiLink mlirSSAValue Identifier
+  HiLink mlirSymbol Constant
+  HiLink mlirOperation Function
+  HiLink mlirDialect StorageClass
   HiLink mlirBlockIdentifier Label
   HiLink mlirTypeIdentifier Type
   HiLink mlirAttrIdentifier PreProc
+  HiLink mlirAttributeName Typedef
+  HiLink mlirMluDialect StorageClass
+  HiLink mlirMluControlOp Conditional
+  HiLink mlirMluMemoryOp Constant
+  HiLink mlirMluSyncOp PreProc
+  HiLink mlirMluAtomicOp Special
+  HiLink mlirMluQuotedOp Function
+  HiLink mlirMluAttribute Typedef
 
   delcommand HiLink
 endif
