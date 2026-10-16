@@ -17,3 +17,21 @@ let g:strip_whitespace_on_save=1
 let g:current_line_whitespace_disabled_hard=0
 let g:current_line_whitespace_disabled_soft=0
 "vim-better-whitespace end ==================
+
+" C/C++ language server. vim-lsp-settings finds clangd on PATH or in its
+" managed server directory; asyncomplete-lsp provides automatic suggestions.
+let g:lsp_settings_filetype_c = ['clangd']
+let g:lsp_settings_filetype_cpp = ['clangd']
+let g:lsp_settings_servers_dir = expand('~/.vim/lsp-servers')
+
+function! s:TinyVimLspBuffer() abort
+  setlocal omnifunc=lsp#complete
+  nnoremap <silent><buffer> gd <Plug>(lsp-definition)
+  nnoremap <silent><buffer> gr <Plug>(lsp-references)
+  nnoremap <silent><buffer> K <Plug>(lsp-hover)
+endfunction
+
+augroup tinyvim_lsp
+  autocmd!
+  autocmd User lsp_buffer_enabled call s:TinyVimLspBuffer()
+augroup END

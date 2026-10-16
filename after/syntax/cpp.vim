@@ -45,7 +45,7 @@ if exists('g:cpp_class_scope_highlight') && g:cpp_class_scope_highlight
     syn match   cCustomScope    "::"
     syn match   cCustomClass    "\w\+\s*::"
                 \ contains=cCustomScope
-    hi def link cCustomClass Function
+    hi def link cCustomClass Typedef
 endif
 
 " Clear cppStructure and replace "class" and/or "template" with matches
@@ -92,7 +92,7 @@ if exists('g:cpp_class_decl_highlight') && g:cpp_class_decl_highlight
 				\ contains=cCustomAccessKey
 	syn match cCustomClassName "\<protected\_s\+\w\+\>"
 				\ contains=cCustomAccessKey
-	hi def link cCustomClassName Function
+	hi def link cCustomClassName Typedef
 endif
 " Template functions.
 " Naive implementation that sorta works in most cases. Should correctly

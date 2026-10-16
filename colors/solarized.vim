@@ -595,6 +595,26 @@ exe "hi! Error"          .s:fmt_bold   .s:fg_red    .s:bg_none
 exe "hi! Todo"           .s:fmt_bold   .s:fg_magenta.s:bg_none
 "       *Todo            anything that needs extra attention; mostly the
 "                        keywords TODO FIXME and XXX
+
+" Code palette: quiet names, distinct calls, literals, types and control flow.
+exe "hi! Identifier"     .s:fmt_none   .s:fg_base1  .s:bg_none
+exe "hi! Function"       .s:fmt_none   .s:fg_blue   .s:bg_none
+exe "hi! String"         .s:fmt_none   .s:fg_cyan   .s:bg_none
+exe "hi! Character"      .s:fmt_none   .s:fg_cyan   .s:bg_none
+exe "hi! Number"         .s:fmt_none   .s:fg_magenta.s:bg_none
+exe "hi! Float"          .s:fmt_none   .s:fg_magenta.s:bg_none
+exe "hi! Boolean"        .s:fmt_bold   .s:fg_orange .s:bg_none
+exe "hi! Conditional"    .s:fmt_bold   .s:fg_green  .s:bg_none
+exe "hi! Repeat"         .s:fmt_bold   .s:fg_green  .s:bg_none
+exe "hi! Keyword"        .s:fmt_none   .s:fg_green  .s:bg_none
+exe "hi! Exception"      .s:fmt_bold   .s:fg_red    .s:bg_none
+exe "hi! Operator"       .s:fmt_none   .s:fg_base1  .s:bg_none
+exe "hi! Delimiter"      .s:fmt_none   .s:fg_base01 .s:bg_none
+exe "hi! Structure"      .s:fmt_bold   .s:fg_yellow .s:bg_none
+exe "hi! Typedef"        .s:fmt_none   .s:fg_violet .s:bg_none
+exe "hi! StorageClass"   .s:fmt_none   .s:fg_violet .s:bg_none
+exe "hi! Label"          .s:fmt_none   .s:fg_violet .s:bg_none
+exe "hi! SpecialComment" .s:fmt_bold   .s:fg_orange .s:bg_none
 "
 "}}}
 " Extended highlighting "{{{

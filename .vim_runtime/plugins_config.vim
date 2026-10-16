@@ -17,8 +17,11 @@ call plug#begin()
 " 自动生成成对括号插件；
 "Plug 'jiangmiao/auto-pairs'
 
-" 自动补全插件，需要clang
-"Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+" C/C++ LSP and automatic completion (clangd).
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 " 状态栏设置插件和主题
 Plug 'vim-airline/vim-airline'
